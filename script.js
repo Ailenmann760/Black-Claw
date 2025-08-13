@@ -39,10 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('scrolled');
-                // You can uncomment this line if you want the animation to happen only once
-                // observer.unobserve(entry.target);
             } else {
-                // This line makes the animation "flick away" when you scroll past
                 entry.target.classList.remove('scrolled');
             }
         });
