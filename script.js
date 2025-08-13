@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
-    document.querySelectorAll('a.nav-links a').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
 
-            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             const menuToggle = document.querySelector('.menu-toggle');
             if (nav.classList.contains('active')) {
@@ -25,5 +24,31 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', () => {
         mainNav.classList.toggle('active');
         menuToggle.classList.toggle('active');
+    });
+
+    // On-Scroll Animation with Intersection Observer
+    const animatedSections = document.querySelectorAll('.scroll-animated');
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: "0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('scrolled');
+                // You can uncomment this line if you want the animation to happen only once
+                // observer.unobserve(entry.target);
+            } else {
+                // This line makes the animation "flick away" when you scroll past
+                entry.target.classList.remove('scrolled');
+            }
+        });
+    }, observerOptions);
+
+    animatedSections.forEach(section => {
+        observer.observe(section);
     });
 });
