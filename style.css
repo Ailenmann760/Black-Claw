@@ -6,7 +6,7 @@
     --highlight-text: #f5f5f5;
     --border-color: #233554;
     --font-family: 'Poppins', sans-serif;
-    --transition-duration: 0.3s;
+    --transition-duration: 0.8s;
 }
 
 * {
@@ -22,8 +22,27 @@ body {
     font-family: var(--font-family);
     line-height: 1.7;
     overflow-x: hidden;
-    padding-bottom: 4rem;
+    position: relative;
 }
+
+/* Dynamic Background Animation */
+.background-animation {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #0e1e35 0%, #0c1218 50%);
+    opacity: 0.5;
+    animation: backgroundDrift 60s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes backgroundDrift {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(360deg) scale(1.2); }
+}
+
 
 .container {
     max-width: 1200px;
@@ -38,9 +57,9 @@ h1, h2, h3 {
     line-height: 1.2;
 }
 
-h1 { font-size: 3.5rem; margin-bottom: 1.5rem; }
-h2 { font-size: 2.8rem; margin-bottom: 1.5rem; }
-h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+h3 { font-size: 1.6rem; margin-bottom: 1rem; }
 
 p {
     font-size: 1.1rem;
@@ -57,7 +76,7 @@ p.section-subtitle {
 a {
     color: var(--accent-color);
     text-decoration: none;
-    transition: color var(--transition-duration) ease;
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -85,7 +104,7 @@ a:hover {
 
 .logo {
     color: var(--accent-color);
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
     letter-spacing: 0.5px;
@@ -111,7 +130,7 @@ a:hover {
     color: var(--text-color);
     text-decoration: none;
     font-size: 1.1rem;
-    transition: color var(--transition-duration) ease;
+    transition: color 0.3s ease;
 }
 
 .main-nav a:hover {
@@ -131,12 +150,12 @@ a:hover {
     height: 3px;
     background-color: var(--text-color);
     margin: 6px 0;
-    transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Hero Section */
 .hero-section {
-    min-height: 85vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,26 +164,12 @@ a:hover {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(10, 15, 25, 0.9) 0%, rgba(20, 30, 48, 0.8) 100%);
+    animation: heroFadeIn 1.5s ease-in-out;
 }
 
 .hero-content {
     max-width: 800px;
     z-index: 10;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    animation: fadeInUp 1s ease-in-out 0.2s both;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: #a8b2d1;
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-    animation: fadeInUp 1s ease-in-out 0.4s both;
 }
 
 .cta-button {
@@ -175,8 +180,7 @@ a:hover {
     border-radius: 5px;
     font-weight: 600;
     border: 2px solid var(--accent-color);
-    transition: transform var(--transition-duration) ease, background-color var(--transition-duration) ease, color var(--transition-duration) ease;
-    animation: fadeInUp 1s ease-in-out 0.6s both;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .cta-button:hover {
@@ -185,41 +189,24 @@ a:hover {
     color: var(--primary-color);
 }
 
-.hero-graphic {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    opacity: 0.1;
-    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(50px);
-    z-index: 1;
-    pointer-events: none;
+@keyframes heroFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.hero-background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(12, 18, 24, 0.6);
-    z-index: 2;
-    pointer-events: none;
+/* Scroll Animation Effects */
+.scroll-animated {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    position: relative;
+    z-index: 5;
+    background: linear-gradient(to right, rgba(10, 15, 25, 0.5), var(--secondary-color) 10%, var(--secondary-color) 90%, rgba(10, 15, 25, 0.5));
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.scroll-animated.scrolled {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Sections - General Styling */
@@ -227,26 +214,7 @@ section {
     padding: 6rem 0;
     position: relative;
     overflow: hidden;
-}
-
-.section-edge-overlay {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(to bottom, var(--primary-color) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-.section-edge-overlay.top {
-    top: 0;
-    transform: translateY(-100%) skewY(3deg);
-}
-
-.section-edge-overlay.bottom {
-    bottom: 0;
-    transform: translateY(100%) skewY(-3deg);
-    background: linear-gradient(to top, var(--primary-color) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .about-section .container {
@@ -258,14 +226,12 @@ section {
 
 .about-section .content-block {
     text-align: left;
-    animation: fadeInRight 1s ease-in-out;
 }
 
 .about-section .image-block {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    animation: fadeInLeft 1s ease-in-out;
 }
 
 .about-section .placeholder-image {
@@ -273,33 +239,6 @@ section {
     height: 400px;
     background-size: cover;
     background-position: center;
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Solutions Section */
-.solutions-section {
-    background: var(--secondary-color);
 }
 
 .solutions-section .grid-container {
@@ -314,7 +253,7 @@ section {
     padding: 2.5rem;
     border-radius: 10px;
     border: 1px solid var(--border-color);
-    transition: transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     text-align: center;
 }
 
@@ -334,20 +273,6 @@ section {
     color: var(--highlight-text);
 }
 
-.solution-card .learn-more {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 1.5rem;
-    font-weight: 600;
-    color: var(--accent-color);
-}
-
-.solution-card .learn-more i {
-    font-size: 1rem;
-    margin-left: 0.5rem;
-}
-
-/* Services Section */
 .services-section .services-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -360,7 +285,7 @@ section {
     padding: 2rem;
     border-radius: 10px;
     border: 1px solid var(--border-color);
-    transition: transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -382,41 +307,38 @@ section {
     color: var(--highlight-text);
 }
 
-/* Contact Section */
-.contact-section {
+.whitepaper-section, .contact-section {
     text-align: center;
-    background: var(--secondary-color);
     padding: 7rem 0;
 }
 
-.contact-section h2 {
+.whitepaper-section h2, .contact-section h2 {
     margin-bottom: 1.5rem;
 }
 
-.contact-section p {
+.whitepaper-section p, .contact-section p {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto 2.5rem;
     color: #a8b2d1;
 }
 
-.contact-button {
+.whitepaper-button, .contact-button {
     background-color: var(--accent-color);
     color: var(--primary-color);
     padding: 1.1rem 3rem;
     border-radius: 5px;
     font-weight: 600;
     text-decoration: none;
-    transition: transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border: none;
 }
 
-.contact-button:hover {
+.whitepaper-button:hover, .contact-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Footer */
 .site-footer {
     background: var(--secondary-color);
     padding: 2.5rem 0;
@@ -442,22 +364,11 @@ section {
     text-decoration: none;
     margin: 0 0.8rem;
     font-size: 1.1rem;
-    transition: color var(--transition-duration) ease;
+    transition: color 0.3s ease;
 }
 
 .social-links a:hover {
     color: var(--accent-color);
-}
-
-/* Animations */
-@keyframes moveInBackground {
-    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-    50% { transform: translate(-45%, -45%) rotate(180deg) scale(1.05); }
-    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
-}
-
-.hero-graphic {
-    animation: moveInBackground 10s infinite alternate ease-in-out;
 }
 
 /* Media Queries for Responsiveness */
@@ -477,8 +388,8 @@ section {
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.4rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.2rem; }
     .hero-content p { font-size: 1.1rem; }
     .main-nav { display: none; }
     .menu-toggle { display: block; }
@@ -511,5 +422,5 @@ section {
 }
 
 @media (max-width: 576px) {
-    h1 { font-size: 2.5rem; }
+    h1 { font-size: 2rem; }
 }
