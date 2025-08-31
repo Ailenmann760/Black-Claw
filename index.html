@@ -3,134 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Claw - Premium Software Agency</title>
+    <title>Building the Future - Modern Landing Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="black-claw-logo.png" alt="Black Claw Logo" />
-            </div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">BuildFuture</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="logo-animation">
-                <img id="claw-mark" src="claw-mark-glow.png" alt="Animated Claw Mark" />
-            </div>
-            <h1 id="slogan"></h1> <!-- Typing animation here -->
-            <div class="cta-buttons">
-                <a href="mailto:corporateblackclaw@gmail.com" class="btn primary">Hire Us</a>
-                <a href="mailto:corporateblackclaw@gmail.com" class="btn secondary">Contact Us</a>
-            </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>At Black Claw, we are more than a software agency — we are a brand that builds the future of digital solutions. Our team specializes in creating powerful, scalable, and innovative software tailored for businesses and individuals worldwide. From web development and app development to full-stack solutions, UI/UX design, and ongoing maintenance, we deliver excellence with every project.</p>
-            <a href="mailto:corporateblackclaw@gmail.com" class="btn primary glow">Hire Us</a>
-        </div>
-    </section>
+    <main>
+        <section id="hero" class="section">
+            <div class="hero-content">
+                <h1 id="typing-effect"></h1>
+                <p>Innovating tomorrow, today.</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+        </section>
 
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Web Development</h3>
-                    <p>Build responsive, high-performance websites.</p>
-                </div>
-                <div class="service-card">
-                    <h3>App Development</h3>
-                    <p>Create intuitive mobile and desktop apps.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Full-Stack Development</h3>
-                    <p>End-to-end solutions for seamless integration.</p>
-                </div>
-                <div class="service-card">
-                    <h3>UI/UX Design</h3>
-                    <p>Design user-centric interfaces with stunning visuals.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Maintenance</h3>
-                    <p>Keep your software updated and secure.</p>
+        <section id="about" class="section animate-on-scroll">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>We are dedicated to creating cutting-edge solutions that bridge technology and humanity. Our mission is to empower businesses and individuals with innovative tools for a brighter, more connected future.</p>
+            </div>
+        </section>
+
+        <section id="services" class="section animate-on-scroll">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-robot service-icon"></i>
+                        <h3>AI Development</h3>
+                        <p>Custom AI solutions tailored to your needs, from machine learning to natural language processing.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cloud service-icon"></i>
+                        <h3>Cloud Solutions</h3>
+                        <p>Scalable cloud infrastructure to optimize your operations and reduce costs.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-code service-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>Modern, responsive websites and applications built with the latest technologies.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        <h3>Cybersecurity</h3>
+                        <p>Protect your data with advanced security measures and compliance frameworks.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="portfolio">
-        <div class="container">
-            <h2>Portfolio</h2>
-            <div class="portfolio-grid">
-                <!-- Placeholder projects; replace with real ones -->
-                <div class="portfolio-item" data-description="Fintech App for Blackalgo ([lapa.ninja](https://www.lapa.ninja/post/blackalgo/))">
-                    <img src="project1-placeholder.png" alt="Project 1">
-                </div>
-                <div class="portfolio-item" data-description="E-commerce Site">
-                    <img src="project2-placeholder.png" alt="Project 2">
-                </div>
-                <div class="portfolio-item" data-description="Mobile App UI">
-                    <img src="project3-placeholder.png" alt="Project 3">
-                </div>
-                <div class="portfolio-item" data-description="Dashboard Design">
-                    <img src="project4-placeholder.png" alt="Project 4">
-                </div>
-                <div class="portfolio-item" data-description="Agency Website for BLACKT ([blackt.io](https://www.blackt.io/))">
-                    <img src="project5-placeholder.png" alt="Project 5">
-                </div>
-                <div class="portfolio-item" data-description="Startup Branding for Black Nova ([blacknova.website](https://blacknova.website/))">
-                    <img src="project6-placeholder.png" alt="Project 6">
+        <section id="contact" class="section animate-on-scroll">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <footer id="footer" class="section">
+            <div class="container">
+                <p>&copy; 2023 BuildFuture. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn primary glow">Send Message</button>
-            </form>
-            <a href="mailto:corporateblackclaw@gmail.com" class="btn secondary">Or Email Us Directly</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Black Claw. All Rights Reserved.</p>
-            <div class="socials">
-                <a href="https://x.com/blvckclaw?t=XioaX--v8NG-UJzbBT7xgw&s=09" target="_blank">
-                    <img src="twitter-icon.svg" alt="Twitter">
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="scripts.js"></script>
+        </footer>
+    </main>
 </body>
 </html>
