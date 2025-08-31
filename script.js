@@ -1,51 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-            });
+// Typing effect for slogan
+const sloganElement = document.getElementById('slogan');
+const sloganText = 'Building the Future';
+let i = 0;
 
-            const nav = document.querySelector('.main-nav');
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                menuToggle.classList.remove('active');
-            }
-        });
-    });
+function typeWriter() {
+    if (i < sloganText.length) {
+        sloganElement.innerHTML += sloganText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+    }
+}
 
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
+document.addEventListener('DOMContentLoaded', function() {
+    typeWriter();
 
-    menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-    });
-
-    // On-Scroll Animation with Intersection Observer
-    const animatedSections = document.querySelectorAll('.scroll-animated');
-
-    const observerOptions = {
-        root: null,
-        threshold: 0.1,
-        rootMargin: "0px"
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Smooth transitions between sections
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.5 };
+    const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('scrolled');
-            } else {
-                entry.target.classList.remove('scrolled');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, options);
 
-    animatedSections.forEach(section => {
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.5s ease';
         observer.observe(section);
+    });
+
+    // Contact form submission (basic)
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simple validation (add more if needed)
+        alert('Message sent! (In production, integrate with a backend.)');
     });
 });
