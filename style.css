@@ -15,17 +15,18 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px; /* Tight, balanced spacing via whitespace principles */
+    padding: 30px 15px; /* tighter balanced spacing */
 }
 
 /* Hero Section */
 #hero {
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    background: url("images/hero.png") no-repeat center center/cover;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    color: #fff;
 }
 
 #hero::before {
@@ -35,8 +36,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
-    animation: pulse 5s ease-in-out infinite;
+    background: rgba(0,0,0,0.65); /* dark overlay for text readability */
+    z-index: 0;
 }
 
 @keyframes pulse {
@@ -45,9 +46,9 @@ body {
 }
 
 .logo {
-    width: 100px;
+    width: 70px;   /* smaller logo */
     height: auto;
-    margin: 20px;
+    margin: 10px 20px;
 }
 
 .hero-content {
@@ -59,17 +60,18 @@ body {
     text-align: center;
     z-index: 1;
     position: relative;
+    padding: 0 20px;
 }
 
 #typing-effect {
-    font-size: 3em;
+    font-size: 2.2em; /* reduced hero text size */
     font-weight: bold;
     color: #00d4ff;
     border-right: 2px solid #00d4ff;
     animation: blink 1s infinite step-end;
     white-space: nowrap;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 @keyframes blink {
@@ -80,7 +82,7 @@ body {
 .hire-btn {
     background: #00d4ff;
     color: #0a0a0a;
-    padding: 15px 30px;
+    padding: 12px 25px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
@@ -99,21 +101,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     z-index: 2;
     transition: background 0.3s;
+    padding: 5px 15px;
 }
 
 #navbar ul {
     list-style: none;
     display: flex;
-    margin: 20px;
+    gap: 10px;
+    margin: 0;
 }
 
 #navbar a {
+    font-size: 0.9rem; /* reduced nav text size */
     color: #e0e0e0;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     transition: color 0.3s;
 }
 
@@ -123,10 +128,10 @@ body {
 
 /* Sections */
 .fade-in {
-    padding: 60px 0; /* Minimal gapping for professional, tight layout */
+    padding: 40px 0; /* tighter spacing */
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-out;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
 
 .fade-in.reveal {
@@ -134,32 +139,37 @@ body {
     transform: translateY(0);
 }
 
+/* keep sections visible once revealed */
+section {
+    min-height: auto;
+}
+
 section h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 2em;
+    margin-bottom: 15px;
     color: #00d4ff;
 }
 
 section p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1.05em;
+    margin-bottom: 15px;
 }
 
 /* Services */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px; /* Tight spacing, no oversized gaps */
+    gap: 15px; /* tight, professional spacing */
 }
 
 .service-card {
     background: #1e1e1e;
-    padding: 20px;
+    padding: 18px;
     border-radius: 10px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
     border: 1px solid #333;
 }
 
@@ -177,7 +187,7 @@ section p {
 .buttons {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .btn {
@@ -187,6 +197,7 @@ section p {
     text-decoration: none;
     border-radius: 5px;
     transition: background 0.3s;
+    font-size: 0.95rem;
 }
 
 .btn:hover {
@@ -194,7 +205,7 @@ section p {
 }
 
 .social {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .social svg {
@@ -209,13 +220,14 @@ section p {
 /* Footer */
 footer {
     background: #0a0a0a;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     border-top: 1px solid #333;
 }
 
 footer p {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
 }
 
 /* Responsive */
@@ -223,6 +235,7 @@ footer p {
     .services-grid {
         grid-template-columns: 1fr;
     }
-    #quoting-effect { font-size: 2em; }
+    #typing-effect { font-size: 1.6em; }
     .buttons { flex-direction: column; }
+    #navbar a { font-size: 0.85rem; }
 }
