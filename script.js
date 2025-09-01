@@ -1,52 +1,39 @@
-// Typing effect for hero slogan
-const typingText = document.getElementById('typing-text');
-const slogan = "Building The Future";
+// Typing effect
+const typingText = "Building The Future";
 let index = 0;
+const typingElement = document.getElementById('typing-effect');
 
 function typeWriter() {
-    if (index < slogan.length) {
-        typingText.textContent += slogan.charAt(index);
+    if (index < typingText.length) {
+        typingElement.innerHTML += typingText.charAt(index);
         index++;
-        setTimeout(typeWriter, 150); // Adjustable speed
+        setTimeout(typeWriter, 100);
     }
 }
-document.addEventListener('DOMContentLoaded', typeWriter);
 
-// Smooth scrolling for nav links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+window.addEventListener('load', () => {
+    setTimeout(typeWriter, 1000); // Start after page load
 });
 
-// Intersection Observer for scroll animations (fixed: no disappearing)
-const sections = document.querySelectorAll('.section');
-const serviceCards = document.querySelectorAll('.service-card');
-
-const observer = new IntersectionObserver(entries => {
+// Scroll animations (fade-in without disappearing)
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); // stays visible, no exit
+            entry.target.classList.add('reveal');
+            // Do not remove 'reveal' to keep visible
         }
     });
 }, { threshold: 0.1 });
 
-sections.forEach(section => observer.observe(section));
+// Observe sections and cards
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.card-reveal').forEach(el => observer.observe(el));
 
-const cardObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+// Smooth scrolling for nav
+document.querySelectorAll('#navbar a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
     });
-}, { threshold: 0.1 });
-
-serviceCards.forEach(card => cardObserver.observe(card));
-
-// Mobile nav toggle (optional, add a button in HTML if needed)
-const navLinks = document.querySelector('.nav-links');
-// Example toggle:
-// document.getElementById('nav-toggle').addEventListener('click', () => navLinks.classList.toggle('show'));
+});
