@@ -10,15 +10,7 @@ function typeWriter() {
         setTimeout(typeWriter, 150); // Adjustable speed
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
-    typeWriter();
-    // Mobile nav toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    navToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
-});
+document.addEventListener('DOMContentLoaded', typeWriter);
 
 // Smooth scrolling for nav links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -30,15 +22,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for scroll fade-in (sections remain visible)
+// Intersection Observer for scroll animations (fixed: no disappearing)
 const sections = document.querySelectorAll('.section');
+const serviceCards = document.querySelectorAll('.service-card');
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
+            entry.target.classList.add('visible'); // stays visible, no exit
         }
     });
 }, { threshold: 0.1 });
 
 sections.forEach(section => observer.observe(section));
+
+const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+serviceCards.forEach(card => cardObserver.observe(card));
+
+// Mobile nav toggle (optional, add a button in HTML if needed)
+const navLinks = document.querySelector('.nav-links');
+// Example toggle:
+// document.getElementById('nav-toggle').addEventListener('click', () => navLinks.classList.toggle('show'));
