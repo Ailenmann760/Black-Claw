@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Claw</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Claw - Tech Agency Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <a href="#" class="logo">
-        <img src="images/logo.png" alt="Black Claw Logo" />
-      </a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header id="hero">
+        <nav id="navbar">
+            <img src="images/logo.png" alt="Black Claw Logo" class="logo">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1 id="typing-effect"></h1>
+            <a href="mailto:corporateblackclaw@gmail.com" class="hire-btn">Hire Us</a>
+        </div>
+    </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Welcome to <span class="highlight">Black Claw</span></h1>
-      <p class="typing-text"></p>
-      <a href="#contact" class="btn">Hire Me</a>
-    </div>
-  </section>
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Black Claw is a full-stack tech agency passionate about building innovative solutions across blockchain, Web3, and modern software. We combine creativity and technology to help brands scale in the digital era.</p>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>
-        I am a Full-stack Developer with expertise in building responsive, modern, and scalable websites. 
-        My goal is to deliver elegant and functional solutions tailored to client needs.
-      </p>
-    </div>
-  </section>
+    <section id="services" class="fade-in">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-grid">
+                <div class="service-card card-reveal">
+                    <h3>Full-Stack Development</h3>
+                </div>
+                <div class="service-card card-reveal">
+                    <h3>Blockchain Solutions</h3>
+                </div>
+                <div class="service-card card-reveal">
+                    <h3>Web3 Integrations</h3>
+                </div>
+                <div class="service-card card-reveal">
+                    <h3>Smart Contract Development</h3>
+                </div>
+                <div class="service-card card-reveal">
+                    <h3>UI/UX Design</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>Full-Stack Development</li>
-        <li>Blockchain & Web3</li>
-        <li>Smart Contracts</li>
-        <li>Decentralized Applications (dApps)</li>
-        <li>UI/UX Design</li>
-        <li>APIs & Integrations</li>
-      </ul>
-    </div>
-  </section>
+    <section id="contact" class="fade-in">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Ready to build the future? Let's collaborate on your next project.</p>
+            <div class="buttons">
+                <a href="mailto:corporateblackclaw@gmail.com" class="btn">Hire Us</a>
+                <a href="mailto:corporateblackclaw@gmail.com" class="btn">Contact Us</a>
+            </div>
+            <div class="social">
+                <a href="https://x.com/blvckclaw?t=XioaX--v8NG-UJzbBT7xgw&s=09" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:blackclawdevs@gmail.com">blackclawdevs@gmail.com</a></p>
-      <p>Twitter: <a href="https://twitter.com/blackclawdev" target="_blank">@blackclawdev</a></p>
-    </div>
-  </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Black Claw. All rights reserved.</p>
+            <a href="https://x.com/blvckclaw?t=XioaX--v8NG-UJzbBT7xgw&s=09" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+        </div>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Black Claw. All Rights Reserved.</p>
-    </div>
-  </footer>
+    <script src="script.js"></script>
 </body>
 </html>
