@@ -10,7 +10,15 @@ function typeWriter() {
         setTimeout(typeWriter, 150); // Adjustable speed
     }
 }
-document.addEventListener('DOMContentLoaded', typeWriter);
+document.addEventListener('DOMContentLoaded', () => {
+    typeWriter();
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+});
 
 // Smooth scrolling for nav links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -22,36 +30,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for scroll animations
+// Intersection Observer for scroll fade-in (sections remain visible)
 const sections = document.querySelectorAll('.section');
-const serviceCards = document.querySelectorAll('.service-card');
-let lastVisibleSection = null;
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            if (lastVisibleSection) {
-                lastVisibleSection.classList.add('exit');
-            }
-            entry.target.classList.add('visible');
-            lastVisibleSection = entry.target;
+            entry.target.classList.add('fade-in');
         }
     });
 }, { threshold: 0.1 });
 
 sections.forEach(section => observer.observe(section));
-
-const cardObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-serviceCards.forEach(card => cardObserver.observe(card));
-
-// Mobile nav toggle (if needed, add a hamburger menu in HTML)
-const navLinks = document.querySelector('.nav-links');
-// Add a toggle button in HTML for mobile if desired, e.g., <button id="nav-toggle">☰</button>
-// Then: document.getElementById('nav-toggle').addEventListener('click', () => navLinks.classList.toggle('show'));
