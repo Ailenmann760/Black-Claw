@@ -1,84 +1,277 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Black Claw - Tech Agency Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Navbar -->
-  <header>
-    <div class="navbar">
-      <img src="images/logo.png" alt="Black Claw Logo" class="logo">
-      <nav class="nav-links">
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-    </div>
-  </header>
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="hero-content">
-      <h1 id="typing-effect">Building The Future</h1>
-      <a href="mailto:corporateblackclaw@gmail.com" class="hire-btn">Hire Us</a>
-    </div>
-  </section>
+body {
+  font-family: 'Arial', sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
 
-  <!-- About -->
-  <section id="about" class="frame fade-in">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Black Claw is a full-stack tech agency passionate about building innovative solutions across blockchain, Web3, and modern software. We combine creativity and technology to help brands scale in the digital era.</p>
-    </div>
-  </section>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-  <!-- Services -->
-  <section id="services" class="frame fade-in">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="services-grid">
-        <div class="service-card card-reveal"><h3>Full-Stack Development</h3></div>
-        <div class="service-card card-reveal"><h3>Blockchain Solutions</h3></div>
-        <div class="service-card card-reveal"><h3>Web3 Integrations</h3></div>
-        <div class="service-card card-reveal"><h3>Smart Contract Development</h3></div>
-        <div class="service-card card-reveal"><h3>UI/UX Design</h3></div>
-      </div>
-    </div>
-  </section>
+/* Hero Section */
+#hero {
+  height: 100vh;
+  background: url('hero.png') no-repeat center center/cover; /* ✅ Background image fixed */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
 
-  <!-- Contact -->
-  <section id="contact" class="frame fade-in">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Ready to build the future? Let's collaborate on your next project.</p>
-      <div class="buttons">
-        <a href="mailto:corporateblackclaw@gmail.com" class="btn">Hire Us</a>
-        <a href="mailto:corporateblackclaw@gmail.com" class="btn">Contact Us</a>
-      </div>
-    </div>
-  </section>
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6); /* Dark overlay for text clarity */
+}
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-left">
-        <img src="images/logo.png" alt="Black Claw Logo" class="footer-logo">
-        <p>&copy; 2023 Black Claw. All rights reserved.</p>
-      </div>
-      <div class="footer-right">
-        <a href="https://x.com/blvckclaw" target="_blank">X (Twitter)</a>
-        <a href="mailto:corporateblackclaw@gmail.com">Email</a>
-      </div>
-    </div>
-  </footer>
+/* Logo */
+.logo {
+  width: 70px; /* ✅ Smaller logo */
+  height: auto;
+  margin: 10px 20px;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* Hero content */
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+#typing-effect {
+  font-size: 2.5em; /* ✅ Reduced heading size */
+  font-weight: bold;
+  color: #00d4ff;
+  border-right: 2px solid #00d4ff;
+  animation: blink 1s infinite step-end;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+@keyframes blink {
+  0%, 50% { border-color: transparent; }
+  51%, 100% { border-color: #00d4ff; }
+}
+
+.hire-btn {
+  background: #003366; /* ✅ Dark professional blue */
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.hire-btn:hover {
+  background: #0055aa;
+}
+
+/* Navigation */
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.9);
+  z-index: 100;
+  padding: 10px 20px;
+}
+
+/* Default hidden menu for mobile */
+#navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+#navbar a {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s;
+}
+
+#navbar a:hover {
+  color: #00d4ff;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  background: #fff;
+  height: 3px;
+  width: 25px;
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+/* Sections */
+.fade-in {
+  padding: 50px 0;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.fade-in.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  font-size: 2.2em;
+  margin-bottom: 15px;
+  color: #00d4ff;
+}
+
+section p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.service-card {
+  background: #0d1b2a; /* ✅ Darker blue card background */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(50px);
+  border: 1px solid #1b263b;
+}
+
+.service-card.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+/* Contact */
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: #003366; /* ✅ Dark professional blue */
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #0055aa;
+}
+
+.social {
+  margin-top: 20px;
+}
+
+.social svg {
+  fill: #e0e0e0;
+  transition: fill 0.3s;
+}
+
+.social a:hover svg {
+  fill: #00d4ff;
+}
+
+/* Footer */
+footer {
+  background: #00111f; /* ✅ Dark professional footer */
+  padding: 25px 0;
+  text-align: center;
+  border-top: 2px solid #003366;
+}
+
+footer p {
+  font-size: 0.9em;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+footer a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #008cba;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #typing-effect { 
+    font-size: 1.8em; 
+  }
+
+  .buttons { 
+    flex-direction: column; 
+  }
+
+  /* Hamburger shows up */
+  .menu-toggle {
+    display: flex;
+  }
+
+  #navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #0d1b2a;
+    border-radius: 8px;
+    padding: 15px;
+  }
+
+  #navbar ul.active {
+    display: flex;
+  }
+}
