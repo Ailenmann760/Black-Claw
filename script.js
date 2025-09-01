@@ -1,86 +1,57 @@
 // Typing effect for hero slogan
-const typingText = "Building the Future";
-const typingElement = document.getElementById('typing-effect');
+const typingText = document.getElementById('typing-text');
+const slogan = "Building The Future";
 let index = 0;
 
 function typeWriter() {
-    if (index < typingText.length) {
-        typingElement.innerHTML += typingText.charAt(index);
+    if (index < slogan.length) {
+        typingText.textContent += slogan.charAt(index);
         index++;
-        setTimeout(typeWriter, 100);
+        setTimeout(typeWriter, 150); // Adjustable speed
     }
 }
+document.addEventListener('DOMContentLoaded', typeWriter);
 
-// Initialize typing effect
-typeWriter();
-
-// Smooth scrolling for navbar links
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
+// Smooth scrolling for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        targetSection.scrollIntoView({
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
     });
 });
 
-// IntersectionObserver for animations
-const observerOptions = {
-    threshold: 0.1
-};
+// Intersection Observer for scroll animations
+const sections = document.querySelectorAll('.section');
+const serviceCards = document.querySelectorAll('.service-card');
+let lastVisibleSection = null;
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if (lastVisibleSection) {
+                lastVisibleSection.classList.add('exit');
+            }
+            entry.target.classList.add('visible');
+            lastVisibleSection = entry.target;
+        }
+    });
+}, { threshold: 0.1 });
+
+sections.forEach(section => observer.observe(section));
+
+const cardObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-        } else {
-            entry.target.classList.remove('visible');
         }
     });
-}, observerOptions);
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.animate-on-scroll').forEach(section => {
-    observer.observe(section);
-});
+serviceCards.forEach(card => cardObserver.observe(card));
 
-// Highlight active navbar link
-const navLinks = document.querySelectorAll('.nav-links a');
-const sections = document.querySelectorAll('.section');
-
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            const id = entry.target.getAttribute('id');
-            const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-    });
-}, { threshold: 0.3 });
-
-sections.forEach(section => {
-    navObserver.observe(section);
-});
-
-// Subtle parallax effect for hero background
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const hero = document.getElementById('hero');
-    if (scrollY < hero.offsetHeight) {
-        const offset = -scrollY / 2;
-        hero.style.backgroundPositionY = `${offset}px`;
-    }
-});
-
-// Contact form submit handler
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Message sent!');
-    this.reset();
-});
+// Mobile nav toggle (if needed, add a hamburger menu in HTML)
+const navLinks = document.querySelector('.nav-links');
+// Add a toggle button in HTML for mobile if desired, e.g., <button id="nav-toggle">☰</button>
+// Then: document.getElementById('nav-toggle').addEventListener('click', () => navLinks.classList.toggle('show'));
